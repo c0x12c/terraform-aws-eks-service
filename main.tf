@@ -55,6 +55,30 @@ data "aws_iam_policy_document" "this" {
       }
     }
   }
+
+  dynamic "statement" {
+    for_each = var.assume_custom_roles
+    content {
+      sid     = statement.value.sid
+      effect  = statement.value.effect
+      actions = statement.value.actions
+
+      principals {
+        type        = statement.value.type
+        identifiers = statement.value.identifiers
+      }
+
+      # condition is optional
+      dynamic "condition" {
+        for_each = try(statement.value.condition, null) == null ? [] : [statement.value.condition]
+        content {
+          test     = condition.value.test
+          variable = condition.value.variable
+          values   = condition.value.values
+        }
+      }
+    }
+  }
 }
 
 resource "kubernetes_namespace" "this" {

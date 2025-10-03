@@ -24,4 +24,19 @@ module "eks_service" {
   region          = "us-west-2"
 
   keda_role_arn = null
+
+  assume_custom_roles = [
+    {
+      sid         = "AssumeRoleSchedulerManagement"
+      effect      = "Allow"
+      actions     = ["sts:AssumeRole"]
+      type        = "Service"
+      identifiers = ["scheduler.amazonaws.com"]
+      condition = {
+        test     = "ArnLike"
+        variable = "aws:SourceArn"
+        values   = ["source-arn"]
+      }
+    }
+  ]
 }

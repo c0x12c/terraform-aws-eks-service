@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.7]() (2025-10-03)
+
+### Features
+
+* Introduced `assume_custom_roles` to allow flexible customization of role assumptions.
+
 ## [0.2.6]() (2025-03-29)
 
 ### Bug fixes
@@ -19,7 +25,6 @@ All notable changes to this project will be documented in this file.
 ### Features
 
 * Add variable `keda_arn` to set keda irsa role arn.
-
 
 ## [0.1.26]() (2024-12-26)
 
