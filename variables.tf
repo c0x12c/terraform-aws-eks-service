@@ -67,11 +67,12 @@ variable "keda_role_arn" {
 variable "assume_custom_roles" {
   description = "List of custom IAM assume role statements."
   type = list(object({
-    sid         = string
+    sid         = optional(string, null)
     effect      = string
     actions     = list(string)
-    type        = string
-    identifiers = list(string)
+    type        = optional(string, null)
+    identifiers = optional(list(string), null)
+    resources   = optional(list(string), null)
     condition = optional(object({
       test     = string
       variable = string
