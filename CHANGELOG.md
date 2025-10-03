@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.8]() (2025-10-03)
+
+### Features
+
+* Introduced sub-field `resources` in `assume_custom_roles` to allow flexible customization of role assumptions.
+
 ## [0.2.7]() (2025-10-03)
 
 ### Features

@@ -70,8 +70,9 @@ variable "assume_custom_roles" {
     sid         = string
     effect      = string
     actions     = list(string)
-    type        = string
+    type        = optional(string, null)
     identifiers = list(string)
+    resources   = optional(list(string), null)
     condition = optional(object({
       test     = string
       variable = string

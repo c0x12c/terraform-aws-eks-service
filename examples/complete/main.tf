@@ -37,6 +37,12 @@ module "eks_service" {
         variable = "aws:SourceArn"
         values   = ["source-arn"]
       }
+    },
+    {
+      sid      = "PassRoleToEventBridgeScheduler"
+      effect   = "Allow"
+      actions  = ["iam:GetRole", "iam:PassRole"]
+      resource = "arn:aws:iam::<account-id>:role/<role-name>"
     }
   ]
 }
